@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>따옴표 출력</title>
+</head>
+<body>
+  <div class="container">
+    <p class="result"></p>
+  </div>
+</body>
+<script>
+  /**
+   * 인용구와 그 말을 한 사람을 입력 받는 프로그램을 작성
+   * [출력 예]
+   * what is the quote? These aren't the droids you're looking for
+   * Who said it? Obi-Wan kenobi
+   * Obi-Wan kenobi says, "These aren't the droids you're looking for"
+   * 
+   * [제약조건]
+   * 한 개의 출력문만 사용하여 결과를 출력할 것. 이때 따옴표를 출력하기 위해 적절한 확장문자를 사용.
+   * 만일 사용하는 프로그래밍 언어가 문자열 보간이나 문자열 대체를 지원하는 경우라도 이 기능들을 사용하지 말고 그냥 문자열 연결을 사용할 것.
+  */
+  let quote = prompt('What is the quote?');
+  let person = prompt('Who said it?');
+
+  document.querySelector('.result').innerHTML = `${person} says, \"${quote}\".`
+</script>
+</html>
