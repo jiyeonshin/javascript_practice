@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>간단한 수학</title>
+</head>
+<body>
+  <p class="result"></p>
+</body>
+<script>
+  /**
+   * 두 개의 숫자를 입력 받은 후, 두 숫자를 이용한 사칙연산 결과 출력
+   * [출력 예]
+   * What is the first number? 10
+   * What is the second number? 5
+   * 10 + 5 = 15
+   * 10 - 5 = 5
+   * 10 * 5 = 50
+   * 10 /5 = 2
+   * 
+   * [제약조건]
+   * 문자열로 입력 받도록 할 것. 이렇게 받은 문자열 값은 사칙연산을 하기 전에 숫자 값으로 변환
+   * 입력값과 출력값 모두 숫자 변환 및 기타 프로세스에 영향을 받지 않도록 할 것
+   * 한 개의 출력문만 사용하여 적당한 위치에 줄바꿈 글자를 넣을 것
+  */
+  let firstNum = prompt('What is the first number?');
+  let secondNum = prompt('What is the second number?')
+
+  firstNum = parseInt(firstNum);
+  secondNum = parseInt(secondNum);
+
+  function add(num1, num2){
+    return num1 + num2;
+  }
+  
+  function subtraction(num1, num2){
+    return num1 - num2;
+  }
+
+  function multiplication(num1, num2){
+    return num1 * num2;
+  }
+
+  function division(num1, num2){
+    return num1 / num2;
+  }
+  
+  let addResult = add(firstNum, secondNum) ;
+  let subtractionResult = subtraction(firstNum, secondNum) ;
+  let multiplicationResult = multiplication(firstNum, secondNum) ;
+  let divisionResult = division(firstNum, secondNum) ;
+
+  document.querySelector('.result').innerHTML = `${firstNum} + ${secondNum} = ${addResult} <br> 
+  ${firstNum} - ${secondNum} = ${subtractionResult} <br>
+  ${firstNum} * ${secondNum} = ${multiplicationResult} <br> 
+  ${firstNum} / ${secondNum} = ${divisionResult}  `;
+</script>
+</html>
