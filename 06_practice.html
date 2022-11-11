@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>퇴직 계산기</title>
+</head>
+<body>
+  <p class="result"></p>
+</body>
+<script>
+  /**
+   * 정년까지 몇 년 남았는지, 퇴직하는 해는 몇 년이 되는지를 계산하는 프로그램 작성
+   * 현재 나이와 퇴직하고자 하는 나이를 입력 받아 다음의 출력 예와 같이 나타내기
+   * [출력 예]
+   * What is your current age? 25
+   * At what age would you like to retire? 65
+   * You have 40 years left until you can retire.
+   * It's 2015, so you can retire in 2055.
+   * 
+   * [제약조건]
+   * 수학 계산에 사용하기 전에 입력 값을 꼭 숫자로 변환
+   * 올해 년도를 프로그램에 직접 넣지 말 것. 대신 프로그래밍 언어를 통해 시스템 날짜를 구해서 사용할 것.
+  */
+
+  let currentAge = prompt('What is your current age?');
+  let retireAge = prompt('At what age would you like to retire?');
+
+  currentAge = parseInt(currentAge);
+  retireAge = parseInt(retireAge);
+
+  function calcRetireAge(currentAge, retireAge){
+    return retireAge - currentAge;
+  }
+
+  let remainAge = calcRetireAge(currentAge, retireAge);
+
+  let today = new Date();
+  let thisYear = today.getFullYear();
+  let retireYear = thisYear + remainAge;
+
+  document.querySelector(".result").innerHTML = `You have ${remainAge} years left until you can retire. <br> It's ${thisYear}, so you can retire in ${retireYear}.`;
+</script>
+</html>
