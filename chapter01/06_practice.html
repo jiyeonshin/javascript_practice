@@ -29,17 +29,26 @@
 
   currentAge = parseInt(currentAge);
   retireAge = parseInt(retireAge);
-
+  
   function calcRetireAge(currentAge, retireAge){
     return retireAge - currentAge;
   }
 
-  let remainAge = calcRetireAge(currentAge, retireAge);
+  /**
+   * [도전과제] 
+   * 이미 퇴직했을 나이를 입력하면 음수 값이 출력되는 상황 해결
+   */
 
-  let today = new Date();
-  let thisYear = today.getFullYear();
-  let retireYear = thisYear + remainAge;
+  if(currentAge > retireAge){
+    document.querySelector(".result").innerHTML = "이미 퇴직했을 나이입니다.";
+  }else{
+    let remainAge = calcRetireAge(currentAge, retireAge);
 
-  document.querySelector(".result").innerHTML = `You have ${remainAge} years left until you can retire. <br> It's ${thisYear}, so you can retire in ${retireYear}.`;
+    let today = new Date();
+    let thisYear = today.getFullYear();
+    let retireYear = thisYear + remainAge;
+
+    document.querySelector(".result").innerHTML = `You have ${remainAge} years left until you can retire. <br> It's ${thisYear}, so you can retire in ${retireYear}.`;
+  }
 </script>
 </html>
