@@ -8,7 +8,10 @@
   </head>
   <body>
     <div class="container">
-      <p class="result"></p>
+      <input type="text" class="inputString">
+      <p class="result">
+        <span class="text"></span> has <span class="count"></span> characters.
+      </p>
     </div>
   </body>
   <script>
@@ -23,9 +26,24 @@
      * 출력을 위해 하나의 출력문을 사용할 것
      * 문자열의 길이를 구하기 위해 프로그래밍 언어에서 제공하는 내장 함수를 이용할 것
     */
-  let inputString = prompt('what is the input string?');
-  let stringNum = inputString.length;
-  
-  document.querySelector('.result').innerHTML = `${inputString} has ${stringNum} characters.`
+    // let inputString = prompt('what is the input string?');
+    // let stringNum = inputString.length;
+    
+    // document.querySelector('.result').innerHTML = `${inputString} has ${stringNum} characters.`;
+    
+    /**
+     * 1. 사용자가 아무 것도 입력하지 않은 채로 엔터 키를 치면 무엇이라도 입력하라는 메시지 출력
+     * 2. 글자를 입력할 때마다 글자수가 바로바로 업데이트 되도록 만들기
+     */
+    document.addEventListener('keyup',()=>{
+      let resultValue = document.querySelector('.inputString').value;
+      let resultCount = resultValue.length;
+      if(resultValue==="" && window.event.keyCode ===13){
+        alert('text를 입력하세요');
+      }
+
+      document.querySelector('.text').innerHTML = resultValue;
+      document.querySelector('.count').innerHTML = resultCount;
+    })
   </script>
 </html>
