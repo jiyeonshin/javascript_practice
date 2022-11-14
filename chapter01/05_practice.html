@@ -8,6 +8,15 @@
 </head>
 <body>
   <p class="result"></p>
+  <div class="firstNumber">
+    <p class="text">What is the first number?</p>
+    <input type="number" class="firstNum">
+  </div>
+  <div class="secondNumber">
+    <p class="text">What is the second number?</p>
+    <input type="number" class="secondNum">
+  </div>
+  <p class="result"></p>
 </body>
 <script>
   /**
@@ -25,11 +34,29 @@
    * 입력값과 출력값 모두 숫자 변환 및 기타 프로세스에 영향을 받지 않도록 할 것
    * 한 개의 출력문만 사용하여 적당한 위치에 줄바꿈 글자를 넣을 것
   */
-  let firstNum = prompt('What is the first number?');
-  let secondNum = prompt('What is the second number?')
+  // let firstNum = prompt('What is the first number?');
+  // let secondNum = prompt('What is the second number?')
 
-  firstNum = parseInt(firstNum);
-  secondNum = parseInt(secondNum);
+  // firstNum = parseInt(firstNum);
+  // secondNum = parseInt(secondNum);
+
+  // let addResult = add(firstNum, secondNum) ;
+  // let subtractionResult = subtraction(firstNum, secondNum) ;
+  // let multiplicationResult = multiplication(firstNum, secondNum) ;
+  // let divisionResult = division(firstNum, secondNum) ;
+
+  // document.querySelector('.result').innerHTML = `${firstNum} + ${secondNum} = ${addResult} <br> 
+  // ${firstNum} - ${secondNum} = ${subtractionResult} <br>
+  // ${firstNum} * ${secondNum} = ${multiplicationResult} <br> 
+  // ${firstNum} / ${secondNum} = ${divisionResult}  `;
+
+  /**
+   * [도전과제]
+   * 숫자만 입력되도록 프로그램 수정. 숫자가 아닌 값이 입력된 경우 진행되면 안됨
+   * 음수를 넣을 수 없도록 구현
+   * 계산 부분을 함수로 구현
+   * GUI로 구현하여 숫자를 넣는 즉시 자동으로 계산결과가 업데이트 되도록 구현.
+  */
 
   function add(num1, num2){
     return num1 + num2;
@@ -47,14 +74,31 @@
     return num1 / num2;
   }
   
-  let addResult = add(firstNum, secondNum) ;
-  let subtractionResult = subtraction(firstNum, secondNum) ;
-  let multiplicationResult = multiplication(firstNum, secondNum) ;
-  let divisionResult = division(firstNum, secondNum) ;
+  function printResult(firstNum, secondNum){
+    let addResult = add(firstNum, secondNum) ;
+    let subtractionResult = subtraction(firstNum, secondNum) ;
+    let multiplicationResult = multiplication(firstNum, secondNum) ;
+    let divisionResult = division(firstNum, secondNum) ;
 
-  document.querySelector('.result').innerHTML = `${firstNum} + ${secondNum} = ${addResult} <br> 
-  ${firstNum} - ${secondNum} = ${subtractionResult} <br>
-  ${firstNum} * ${secondNum} = ${multiplicationResult} <br> 
-  ${firstNum} / ${secondNum} = ${divisionResult}  `;
+    document.querySelector('.result').innerHTML = `${firstNum} + ${secondNum} = ${addResult} <br> 
+    ${firstNum} - ${secondNum} = ${subtractionResult} <br>
+    ${firstNum} * ${secondNum} = ${multiplicationResult} <br> 
+    ${firstNum} / ${secondNum} = ${divisionResult}  `;
+  }
+  
+  document.addEventListener('keyup', ()=>{
+    let firstNum = document.querySelector('.firstNum').value;
+    let secondNum = document.querySelector('.secondNum').value;
+    firstNum = parseInt(firstNum);
+    secondNum = parseInt(secondNum);
+  
+    if(Math.sign(firstNum) === -1 || Math.sign(secondNum) === -1){
+      document.querySelector('.firstNum').value = "";
+      document.querySelector('.secondNum').value = "";
+    }
+
+    printResult(firstNum, secondNum);
+  })
+  
 </script>
 </html>
